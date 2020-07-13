@@ -1,0 +1,45 @@
+id ,kategoria, nazwa, ilość sztuk, kod kreskowy 10 cyfr.
+kategorie (książki, zabawiki, batony, owoce, meble)(możliwość dodawania kategorii)
+nowe produktu dodaje do kategorii
+wypisanie wszystkich produktów 
+wypisanie produktów z danej kategorii
+usówanie kategorii
+KAtegoria (brak kategori) do wypisu, nie da sie usunąć
+
+============================================
+
+showMyMenue
+--Kategorie Produktów
+--Stock Produkt
+--Wyjecie 
+
+
+Kategorie Produktów
+--- Wypisz Kategorie
+--- Wypisz Produkty po Kategorie
+--- Dodaj kategorie 
+--- Usuń Kategorie
+--- Wyjscie
+
+Stock Produkty
+----Wypisz Wszystkie Produkty
+----Wypisz Produkt po Nazwie
+----Dodaj Produkt
+----Usuń Produkt
+----Wyjscie
+--------------------------------------------
+
+getAllCategory
+getProductAtCategory
+getAllProdycts
+getProductAtName
+addKategory
+--saveCategory
+addProducts
+--saveProducts
+dealteCategory
+delateProducts
+exit
+
+
+=============================================
