@@ -16,7 +16,7 @@ showMyMenue
 
 Kategorie Produktów
 --- Wypisz Kategorie
---- Wypisz Produkty po Kategorie
+--- Wypisz Produkty po Id Kategorii
 --- Dodaj kategorie 
 --- Usuń Kategorie
 --- Wyjscie
@@ -30,7 +30,7 @@ Stock Produkty
 --------------------------------------------
 
 getAllCategory
-getProductAtCategory
+getProductAtCategoryID
 getAllProdycts
 getProductAtName
 addKategory
