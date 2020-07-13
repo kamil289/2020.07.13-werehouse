@@ -8,11 +8,11 @@ import pl.camp.it.model.Category;
 
 import java.util.List;
 
-public class  categoryDAO implements IcategoryDAO{
+public class  categoryDAO {
 
 
-    @Override
-    public  void saveCategoryToDatabase(Category category){
+
+    public static void saveCategoryToDatabase(Category category){
 
         Session session = App.sessionFactory.openSession();
         Transaction tx = null;
@@ -31,16 +31,16 @@ public class  categoryDAO implements IcategoryDAO{
     }
 
 
-    @Override
-    public  Category getProductByCategoryID(int id){
+
+    public static   Category getProductByCategoryID(int id){
         Session session = App.sessionFactory.openSession();
         Query<Category> query = session.createQuery("FROM pl.camp.it.model.Category where id = " + id);
         Category category = query.getSingleResult();
         session.close();
         return category;
     }
-    @Override
-    public List<Category> getAllCategory(){
+
+    public static List<Category> getAllCategory(){
         Session session = App.sessionFactory.openSession();
         Query<Category> query =session.createQuery("FROM pl.camp.it.model.Category");
         List<Category> result =query.getResultList();

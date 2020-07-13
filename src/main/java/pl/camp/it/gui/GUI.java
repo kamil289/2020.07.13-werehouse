@@ -1,8 +1,15 @@
 package pl.camp.it.gui;
 
+import pl.camp.it.model.Category;
+import pl.camp.it.model.Products;
+import pl.camp.it.service.ProductService;
+
 import java.util.Scanner;
 
 public class GUI {
+
+
+
 
 
     public static final Scanner scanner = new Scanner(System.in);
@@ -44,7 +51,7 @@ public class GUI {
                 showCategory();
                 break;
             case "2":
-                showProductsByCategory();
+                showProductsByCategoryId();
                 break;
             case "3":
                 addCategoryUpgrade();
@@ -94,19 +101,31 @@ public class GUI {
         }
     }
 
-    public static void showCategory(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj imie");
-        String name = scanner.nextLine();
-        System.out.println("Podaj nazwisko");
-        String surname = scanner.nextLine();
-        System.out.println("Podaj PESEL");
-        String pesel = scanner.nextLine();
+    public static void showCategory() {
+        for(Categorie tempCategorie : CategoryReposytory.getCategoryReposytory().getCategories()){
+            System.out.println(tempCategorie);
+        }
+        for(Category tempCategorie : ICategoryService. {
+            System.out.println(tempCategorie);
+        }
 
-        customerService.generateAndSaveCustomer(name, surname, pesel);
-        System.out.println("Zostales dodany do bazy i masz niezaplacone faktury !!");
 
-        showAddCustomerScreen();
+        categoryService.generateCategory(categoryName);
+
+        showKategorieProduktow();
+
+    }
+
+    public static void showProductsByCategoryId() {
+        System.out.println("Wpisz Id kategorii:");
+        String kategoria = scanner.nextLine();
+        for (Products tempProduct : ProductService.getProductRepositoryByCategory(kategoria).getProducts()){
+            System.out.println(tempProduct);
+        }
+
+        showKategorieProduktow();
+
+    }
 
 
 }

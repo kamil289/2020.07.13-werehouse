@@ -1,36 +1,25 @@
 package pl.camp.it.service;
 
-import java.util.Date;
+import pl.camp.it.model.Products;
+import pl.camp.it.dao.productsDAO;
 
 public class ProductService {
 
-    public void generateProduct(String categoryName,String productsName, int iloscSztuk, int kodKreskowy){
 
-        Customer customer = new Customer();
-        customer.setName(name);
-        customer.setSurname(surname);
-        customer.setPesel(Long.parseLong(pesel));
+    public static void generateProduct(String categoryName, String productsName,
+                                String iloscSztuk, String kodKreskowy){
 
-        Addres addres = new Addres();
-        addres.setCity(RandomDataService.generateCity());
-        addres.setStreet(RandomDataService.generateStreet());
 
-        customer.setAddres(addres);
+        Products products = new Products();
+        products.setCategoryName(categoryName);
+        products.setProductsName(productsName);
+        products.setIloscSztuk(Integer.parseInt(iloscSztuk));
+        products.setKodKreskowy(Integer.parseInt(kodKreskowy));
 
-        Invoice invoice = new Invoice();
-        invoice.setDate(new Date());
-        invoice.setSignature(RandomDataService.generationInvoiceSignature());
 
-        customer.getInvoices().add(invoice);
 
-        Product product = new Product();
-        product.setName(RandomDataService.generateProdactName());
-        product.setPrice(RandomDataService.generateProductPrice());
 
-        product.getCustomer().add(customer);
-        customer.getProducts().add(product);
-
-        customerDAO.saveCustomerToDatabase(customer);
+        productsDAO.saveProductsToDatabase(products);
 
 
     }

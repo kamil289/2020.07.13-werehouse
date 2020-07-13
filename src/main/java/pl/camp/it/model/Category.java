@@ -9,7 +9,6 @@ public class Category {
     private int id;
     @Column(unique = true)
     private String categoryName;
-    private double delate;
     @OneToOne(cascade = CascadeType.ALL)
     private Products products;
     @OneToOne(cascade = CascadeType.ALL)
@@ -31,13 +30,6 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public double getDelate() {
-        return delate;
-    }
-
-    public void setDelate(double delate) {
-        this.delate = delate;
-    }
 
     public Products getProducts() {
         return products;
@@ -60,7 +52,6 @@ public class Category {
         return "Category{" +
                 "id=" + id +
                 ", categoryName='" + categoryName + '\'' +
-                ", delate=" + delate +
                 ", products=" + products +
                 ", productsBrakKategori=" + productsBrakKategori +
                 '}';

@@ -15,7 +15,7 @@ public class ProductsBrakKategori {
     private int iloscSztuk;
     @Column(unique = true, nullable = false)
     private int kodKreskowy;
-    private boolean delate;
+
 
     public int getId() {
         return id;
@@ -57,13 +57,7 @@ public class ProductsBrakKategori {
         this.kodKreskowy = kodKreskowy;
     }
 
-    public boolean isDelate() {
-        return delate;
-    }
 
-    public void setDelate(boolean delate) {
-        this.delate = delate;
-    }
 
     @Override
     public String toString() {
@@ -73,7 +67,6 @@ public class ProductsBrakKategori {
                 ", productsName='" + productsName + '\'' +
                 ", iloscSztuk=" + iloscSztuk +
                 ", kodKreskowy=" + kodKreskowy +
-                ", delate=" + delate +
                 '}';
     }
 }
