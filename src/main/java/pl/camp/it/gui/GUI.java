@@ -2,16 +2,16 @@ package pl.camp.it.gui;
 
 import pl.camp.it.model.Category;
 import pl.camp.it.model.Products;
+import pl.camp.it.service.CategoryService;
 import pl.camp.it.service.ProductService;
 
+import javax.persistence.Id;
 import java.util.Scanner;
 
 public class GUI {
 
-
-
-
-
+    public static CategoryService categoryService = new CategoryService();
+    public static ProductService productService = new ProductService();
     public static final Scanner scanner = new Scanner(System.in);
 
     public static void showMainMenu() {
@@ -48,13 +48,13 @@ public class GUI {
 
         switch (choose) {
             case "1":
-                showCategory();
+                showCategoryBETA();
                 break;
             case "2":
-                showProductsByCategoryId();
+                //showProductsByCategoryId();
                 break;
             case "3":
-                addCategoryUpgrade();
+                //addCategoryUpgrade();
                 break;
             case "4":
                 //Brak metody;
@@ -80,16 +80,16 @@ public class GUI {
 
         switch (choose) {
             case "1":
-                showProductsByCategory();
+                //showProductsByCategory();
                 break;
             case "2":
-                showProducts();
+                //showProducts();
                 break;
             case "3":
-                addProductUpgrade();
+               // addProductUpgrade();
                 break;
             case "4":
-                addProductUpgrade();
+                //addProductUpgrade();
                 break;
             case "5":
                 showMainMenu();
@@ -101,31 +101,21 @@ public class GUI {
         }
     }
 
-    public static void showCategory() {
-        for(Categorie tempCategorie : CategoryReposytory.getCategoryReposytory().getCategories()){
-            System.out.println(tempCategorie);
-        }
-        for(Category tempCategorie : ICategoryService. {
-            System.out.println(tempCategorie);
-        }
+
+    public static void showCategoryBETA(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj Id Kategorii");
+        String category = scanner.nextLine();
 
 
-        categoryService.generateCategory(categoryName);
+        categoryService.generateCategory(category);
+        System.out.println("Z!");
 
-        showKategorieProduktow();
+        showMainMenu();
+
 
     }
 
-    public static void showProductsByCategoryId() {
-        System.out.println("Wpisz Id kategorii:");
-        String kategoria = scanner.nextLine();
-        for (Products tempProduct : ProductService.getProductRepositoryByCategory(kategoria).getProducts()){
-            System.out.println(tempProduct);
-        }
-
-        showKategorieProduktow();
-
-    }
 
 
 }
