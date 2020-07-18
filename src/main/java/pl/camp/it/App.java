@@ -7,7 +7,13 @@ import pl.camp.it.gui.GUI;
 
 public class App {
 
+
     public static SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
-    GUI.showMainMenu;
+
+    public static void main(String[] args) {
+        GUI.showMainMenu();
+    }
+
+
 }

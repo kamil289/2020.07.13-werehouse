@@ -1,18 +1,19 @@
 package pl.camp.it.service;
 
+import pl.camp.it.dao.IproductsDAO;
 import pl.camp.it.model.Products;
 import pl.camp.it.dao.productsDAO;
 
 import java.util.List;
 
-public class ProductService {
+public class ProductService implements IProductService{
 
-    private static final ProductService productService = new ProductService();
-    private static List<Products> products;
-    private static productsDAO productsDAO = new productsDAO();
+    public static final ProductService productService = new ProductService();
+    public static List<Products> products;
+    public static IproductsDAO productsDAO = new productsDAO();
 
 
-    public static void generateProduct(String categoryName, String productsName,
+    public  void generateProduct(String categoryName, String productsName,
                                 String iloscSztuk, String kodKreskowy){
 
 

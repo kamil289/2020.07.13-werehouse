@@ -1,4 +1,12 @@
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/dao/productsDAO.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/service/ProductService.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/gui/GUI.java
 /home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/model/Products.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/dao/categoryDAO.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/dao/IproductsDAO.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/service/IProductService.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/dao/IcategoryDAO.java
 /home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/App.java
-/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/model/ProductsBrakKategori.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/service/CategoryService.java
+/home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/service/ICategoryService.java
 /home/kamil/Moje pliki/Java/Zadanie domowe/werehouse/src/main/java/pl/camp/it/model/Category.java

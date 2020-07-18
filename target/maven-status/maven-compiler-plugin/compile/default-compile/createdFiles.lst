@@ -1,4 +1,12 @@
-pl/camp/it/model/ProductsBrakKategori.class
+pl/camp/it/dao/IcategoryDAO.class
+pl/camp/it/service/ProductService.class
+pl/camp/it/dao/categoryDAO.class
+pl/camp/it/service/CategoryService.class
+pl/camp/it/gui/GUI.class
 pl/camp/it/model/Category.class
 pl/camp/it/App.class
+pl/camp/it/service/ICategoryService.class
+pl/camp/it/dao/productsDAO.class
+pl/camp/it/service/IProductService.class
+pl/camp/it/dao/IproductsDAO.class
 pl/camp/it/model/Products.class

@@ -5,15 +5,13 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import pl.camp.it.App;
 import pl.camp.it.model.Products;
-import pl.camp.it.model.ProductsBrakKategori;
 
 import java.util.List;
 
-public class productsDAO {
+public class productsDAO implements IproductsDAO{
 
-
-
-    public static void saveProductsToDatabase(Products products){
+    @Override
+    public void saveProductsToDatabase(Products products){
 
         Session session = App.sessionFactory.openSession();
         Transaction tx = null;
@@ -28,42 +26,24 @@ public class productsDAO {
         } finally {
             session.close();
         }
-
     }
-
-
-
-    public static void saveProductsBrakKategoriiToDatabase(ProductsBrakKategori productsBrakKategori){
-
+    @Override
+    public Products getProductByIdName(int id){
         Session session = App.sessionFactory.openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            session.saveOrUpdate(productsBrakKategori);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-
-    }
-
-    public  static Products getProductByIdName(String nameProduct){
-        Session session = App.sessionFactory.openSession();
-        Query<Products> query = session.createQuery("FROM pl.camp.it.model.Products, pl.camp.it.model.ProductsBrakKategorii where id = " + nameProduct);
+        Query<Products> query = session.createQuery("FROM pl.camp.it.model.Products,WHERE id = :id");
+        query.setParameter("id", id);
         Products products = query.getSingleResult();
         session.close();
         return products;
     }
 
-    public static List<Products> getAllProducts(){
+    @Override
+    public List<Products> getAllProducts(){
         Session session = App.sessionFactory.openSession();
-        Query<Products> query =session.createQuery("FROM pl.camp.it.model.Products, pl.camp.it.model.ProductsBrakKategorii");
+        Query<Products> query =session.createQuery("FROM pl.camp.it.model.Products");
         List<Products> result =query.getResultList();
         session.close();
         return result;
     }
+
 }

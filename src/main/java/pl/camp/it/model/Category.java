@@ -1,18 +1,22 @@
 package pl.camp.it.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-@Entity(name = "Category")
+@Entity(name = "tcategory")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(unique = true)
     private String categoryName;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Products products;
-    @OneToOne(cascade = CascadeType.ALL)
-    private ProductsBrakKategori productsBrakKategori;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Products> products = new HashSet<>();
+
+
 
     public int getId() {
         return id;
@@ -30,21 +34,12 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-
-    public Products getProducts() {
+    public Set<Products> getProducts() {
         return products;
     }
 
-    public void setProducts(Products products) {
+    public void setProducts(Set<Products> products) {
         this.products = products;
-    }
-
-    public ProductsBrakKategori getProductsBrakKategori() {
-        return productsBrakKategori;
-    }
-
-    public void setProductsBrakKategori(ProductsBrakKategori productsBrakKategori) {
-        this.productsBrakKategori = productsBrakKategori;
     }
 
     @Override
@@ -53,7 +48,6 @@ public class Category {
                 "id=" + id +
                 ", categoryName='" + categoryName + '\'' +
                 ", products=" + products +
-                ", productsBrakKategori=" + productsBrakKategori +
                 '}';
     }
 }

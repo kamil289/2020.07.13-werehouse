@@ -1,8 +1,12 @@
 package pl.camp.it.gui;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import pl.camp.it.model.Category;
 import pl.camp.it.model.Products;
 import pl.camp.it.service.CategoryService;
+import pl.camp.it.service.ICategoryService;
+import pl.camp.it.service.IProductService;
 import pl.camp.it.service.ProductService;
 
 import javax.persistence.Id;
@@ -10,8 +14,9 @@ import java.util.Scanner;
 
 public class GUI {
 
-    public static CategoryService categoryService = new CategoryService();
-    public static ProductService productService = new ProductService();
+
+    public static ICategoryService categoryService = new CategoryService();
+    public static IProductService productService = new ProductService();
     public static final Scanner scanner = new Scanner(System.in);
 
     public static void showMainMenu() {
@@ -54,7 +59,7 @@ public class GUI {
                 //showProductsByCategoryId();
                 break;
             case "3":
-                //addCategoryUpgrade();
+                saveCategoryUpgrade();
                 break;
             case "4":
                 //Brak metody;
@@ -86,7 +91,8 @@ public class GUI {
                 //showProducts();
                 break;
             case "3":
-               // addProductUpgrade();
+               saveProductsToCategoryUpgrade();
+               showStockProduktow();
                 break;
             case "4":
                 //addProductUpgrade();
@@ -108,13 +114,48 @@ public class GUI {
         String category = scanner.nextLine();
 
 
-        categoryService.generateCategory(category);
-        System.out.println("Z!");
+        System.out.println("Wyswietlono dane Kategori");
 
         showMainMenu();
 
 
     }
+
+    public static void saveCategoryUpgrade(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj nazwe Kategorii");
+        String categoryName = scanner.nextLine();
+
+
+        categoryService.saveCategory(categoryName);
+
+        System.out.println("Kategoria Dodana");
+
+    }
+
+    public static void saveProductsToCategoryUpgrade(){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj nazwe Kategorii:");
+        String categoryName = scanner.nextLine();
+        System.out.println("Podaj nazwe Produktu:");
+        String productsName = scanner.nextLine();
+        System.out.println("Podaj ilość sztuk:");
+        String iloscSztuk = scanner.nextLine();
+        System.out.println("Podaj kod kreskowy:");
+        String kodKreskowy = scanner.nextLine();
+
+        productService.generateProduct(categoryName, productsName, iloscSztuk, kodKreskowy);
+        categoryService.saveCategory(categoryName);
+
+        System.out.println("Dodałeś produkt");
+
+
+    }
+
+
+
+
 
 
 

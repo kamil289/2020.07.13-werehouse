@@ -1,9 +1,9 @@
 package pl.camp.it.model;
 
-import javax.annotation.Generated;
+
 import javax.persistence.*;
 
-@Entity(name = "Products")
+@Entity(name = "tproducts")
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
