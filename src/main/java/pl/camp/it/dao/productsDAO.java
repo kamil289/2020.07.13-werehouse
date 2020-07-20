@@ -36,6 +36,15 @@ public class productsDAO implements IproductsDAO{
         session.close();
         return products;
     }
+    @Override
+    public List<Products> getProductByIdName2(String categoryName){
+        Session session = App.sessionFactory.openSession();
+        Query<Products> query = session.createQuery("FROM pl.camp.it.model.Products where categoryName = :categoryName");
+        query.setParameter("categoryName", categoryName);
+        List<Products> products = query.getResultList();
+        session.close();
+        return products;
+    }
 
     @Override
     public List<Products> getAllProducts(){

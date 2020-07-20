@@ -37,7 +37,7 @@ public class CategoryService implements ICategoryService {
         products.setIloscSztuk(111);
         products.setKodKreskowy(234);
 
-        category.getProducts().add(products);
+        category.getProducts();
 
         categoryDAO.saveCategoryToDatabase(category);
 

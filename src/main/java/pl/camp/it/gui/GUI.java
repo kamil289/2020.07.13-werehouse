@@ -13,7 +13,6 @@ import pl.camp.it.service.ProductService;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class GUI {
 
@@ -23,6 +22,7 @@ public class GUI {
     public static IcategoryDAO categoryDAO = new categoryDAO();
     public static IproductsDAO productsDAO = new productsDAO();
     public static final Scanner scanner = new Scanner(System.in);
+
 
     public static void showMainMenu() {
         System.out.println("--------------------------------------");
@@ -68,7 +68,6 @@ public class GUI {
             case "2":
                 showProductsByCategoryId();
                 showKategorieProduktow();
-                // dorobić żeby pokazywalo liste produktow !!!!
                 break;
             case "3":
                 saveCategoryUpgrade();
@@ -88,20 +87,21 @@ public class GUI {
         }
     }
 
-    public static void showStockProduktow() {
+    public static List<Products> showStockProduktow() {
         System.out.println("--------------------------------------");
         System.out.println("1. Wypisz Produkt po Id Kategorii");
         System.out.println("2. Wypisz Wszystkie Produkty");
-        System.out.println("3. Dodaj Produkt");
-        System.out.println("4. Usuń Produkt");
-        System.out.println("5. Powrót");
+        System.out.println("3. Wypisz Produkt po Id Produktu");
+        System.out.println("4. Dodaj Produkt");
+        System.out.println("5. Usuń Produkt");
+        System.out.println("6. Powrót");
         System.out.println("--------------------------------------");
 
         String choose = scanner.nextLine();
 
         switch (choose) {
             case "1":
-                showProductsByCategory();
+                showAllProductsByIdCategory();
                 showStockProduktow();
                 break;
             case "2":
@@ -109,14 +109,18 @@ public class GUI {
                 showStockProduktow();
                 break;
             case "3":
-                saveProductsToCategoryUpgrade();
+                showProductsByIdProduct();
                 showStockProduktow();
                 break;
             case "4":
-                delateProductbyID();
+                saveProductsToCategoryUpgrade();
                 showStockProduktow();
                 break;
             case "5":
+                delateProductbyID();
+                showStockProduktow();
+                break;
+            case "6":
                 showMainMenu();
                 break;
             default:
@@ -124,6 +128,7 @@ public class GUI {
                 showMainMenu();
                 break;
         }
+        return null;
     }
 
 
@@ -197,7 +202,7 @@ public class GUI {
         return showProductsByCategoryId();
 
     }
-    public static List<Products> showProductsByCategory(){
+    public static List<Products> showProductsByIdProduct(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj Id Produktu:");
         String Id = scanner.nextLine();
@@ -209,7 +214,7 @@ public class GUI {
         System.out.println("Wypisano produkty z kategorii !!");
 
         showStockProduktow();
-        return showProductsByCategoryId();
+        return showProductsByIdProduct();
 
     }
     public static List<Products> showProducts() {
@@ -235,9 +240,22 @@ public class GUI {
 
         System.out.println("Usunieto kategorie !!!");
     }
+    public static List<Products> showAllProductsByIdCategory() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj Nazwe Kategorii:");
+        String categoryName = scanner.nextLine();
 
 
+        List<Products> products = productsDAO.getProductByIdName2(categoryName);
 
+        System.out.println("Wypisuje  Produkty !!");
+        System.out.print(products);
+        System.out.println("Wypisano produkty z kategorii !!");
 
+        showStockProduktow();
+        return showProductsByIdProduct();
+
+    }
 
 }
