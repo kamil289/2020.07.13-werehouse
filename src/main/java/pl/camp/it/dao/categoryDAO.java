@@ -5,7 +5,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import pl.camp.it.App;
 import pl.camp.it.model.Category;
-import pl.camp.it.model.Products;
 
 import java.util.List;
 
@@ -45,6 +44,23 @@ public class  categoryDAO implements IcategoryDAO{
         List<Category> result =query.getResultList();
         session.close();
         return result;
+
+    }
+    @Override
+    public  void delateCustomer(String category){
+        Session session = App.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.delete(category);
+            tx.commit();
+        }catch (Exception e){
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally {
+            session.close();
+        }
     }
 
 

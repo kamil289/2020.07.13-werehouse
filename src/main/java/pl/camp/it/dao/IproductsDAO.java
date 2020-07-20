@@ -15,4 +15,5 @@ public interface IproductsDAO {
     Products getProductByIdName(int id);
 
     List<Products> getAllProducts();
+    void delateProducts(String products);
 }

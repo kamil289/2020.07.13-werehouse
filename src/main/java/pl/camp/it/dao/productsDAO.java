@@ -30,7 +30,7 @@ public class productsDAO implements IproductsDAO{
     @Override
     public Products getProductByIdName(int id){
         Session session = App.sessionFactory.openSession();
-        Query<Products> query = session.createQuery("FROM pl.camp.it.model.Products,WHERE id = :id");
+        Query<Products> query = session.createQuery("FROM pl.camp.it.model.Products where id = :id");
         query.setParameter("id", id);
         Products products = query.getSingleResult();
         session.close();
@@ -44,6 +44,22 @@ public class productsDAO implements IproductsDAO{
         List<Products> result =query.getResultList();
         session.close();
         return result;
+    }
+    @Override
+    public  void delateProducts(String products){
+        Session session = App.sessionFactory.openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.delete(products);
+            tx.commit();
+        }catch (Exception e){
+            if (tx != null){
+                tx.rollback();
+            }
+        }finally {
+            session.close();
+        }
     }
 
 }

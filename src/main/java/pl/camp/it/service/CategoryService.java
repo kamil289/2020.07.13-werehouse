@@ -5,14 +5,26 @@ import pl.camp.it.dao.IcategoryDAO;
 import pl.camp.it.model.Category;
 import pl.camp.it.model.Products;
 import pl.camp.it.dao.categoryDAO;
-import pl.camp.it.service.ProductService;
 
 import java.util.List;
-import java.util.Set;
 
 public class CategoryService implements ICategoryService {
 
     static IcategoryDAO categoryDAO =new categoryDAO();
+
+    private List<Category> categories;
+    private static final CategoryService categoryService = new CategoryService();
+
+    public List<Category> getCategories() {
+        return this.categories;
+    }
+
+    public CategoryService getCategoryService() {
+        categories = categoryDAO.getAllCategory();
+        return categoryService;
+    }
+
+
 
     @Override
     public void saveCategory(String categoryName){
@@ -30,14 +42,13 @@ public class CategoryService implements ICategoryService {
         categoryDAO.saveCategoryToDatabase(category);
 
 
-
-
-
-
+    }
+    @Override
+    public CategoryService getCategoryServiceUpgrade() {
+        categories = categoryDAO.getAllCategory();
+        return getCategoryServiceUpgrade();
 
     }
-
-
 
 
 }
